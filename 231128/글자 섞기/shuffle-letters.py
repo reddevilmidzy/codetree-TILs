@@ -20,6 +20,12 @@ back.sort(key=lambda x:x[0])
 
 
 for word in words:
-    print(bisect_left(back, word)+1,end=' ')
+    l = bisect_left(back, word)
+
+    print(l+1,end=' ')
     val = bisect_left(fore, word[::-1])
-    print(val + (val == 0))
+    r = bisect_right(fore, word[::-1])
+    if val+1!=r:
+        print(r)
+    else:
+        print(val + 1)
