@@ -1,28 +1,24 @@
+from bisect import bisect_left, bisect_right
 import sys
 input = sys.stdin.readline
 
 n = int(input())
+words = []
 fore = []
 back = []
 
 for i in range(n):
     s = input().rstrip()
-
     ss = "".join(sorted(s))
-    fore.append((ss, i))
-    back.append((ss[::-1], i))
-
+    words.append(ss)
+    # fore.append((ss, i))
+    # back.append((ss[::-1], i))
+    fore.append(ss)
+    back.append(ss[::-1])
 fore.sort(key=lambda x:x[0])
 back.sort(key=lambda x:x[0])
 
-res = [[0,0] for _ in range(n)]
 
-for i in range(n):
-    res[fore[i][1]][0] = i+1
-    res[back[i][1]][1] = i+1
-
-# print(fore)
-# print(back)
-
-for i,j in res:
-    print(min(i,j), max(i,j))
+for word in words:
+    print(bisect_left(back, word)+1,end=' ')
+    print(bisect_right(fore, word[::-1]))
