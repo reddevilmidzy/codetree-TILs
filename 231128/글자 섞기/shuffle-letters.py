@@ -21,4 +21,5 @@ back.sort(key=lambda x:x[0])
 
 for word in words:
     print(bisect_left(back, word)+1,end=' ')
-    print(bisect_right(fore, word[::-1]))
+    val = bisect_left(fore, word[::-1])
+    print(val + (val == 0))
