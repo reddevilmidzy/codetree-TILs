@@ -1,6 +1,6 @@
 INF = int(1e9)
 n = int(input())
-dp = [INF]*(n+1)
+dp = [INF]*(max(5, n)+1)
 dp[3] = 1
 dp[5] = 1
 
